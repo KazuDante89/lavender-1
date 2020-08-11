@@ -139,6 +139,7 @@ struct events {
 static struct events events_group;
 static struct task_struct *events_notify_thread;
 
+<<<<<<< HEAD
 #define LAST_UPDATE_TOL		USEC_PER_MSEC
 
 /* Bitmask to keep track of the workloads being detected */
@@ -394,6 +395,15 @@ device_param_cb(managed_online_cpus, &param_ops_managed_online_cpus,
  * Userspace sends cpu#:min_freq_value to vote for min_freq_value as the new
  * scaling_min. To withdraw its vote it needs to enter cpu#:0
  */
+=======
+bool cpu_oc = true;
+module_param(cpu_oc, bool, S_IRUSR | S_IWUSR);
+bool cpu_minfreq_lock = false;
+bool cpu_maxfreq_lock = false;
+module_param(cpu_minfreq_lock, bool, S_IRUSR | S_IWUSR);
+module_param(cpu_maxfreq_lock, bool, S_IRUSR | S_IWUSR);
+/*******************************sysfs start************************************/
+>>>>>>> 8728a63a3898... cpufreq: add toggle to block min & max cpufreq changes by userspace
 static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 {
 #if 0
@@ -408,6 +418,8 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 	while ((cp = strpbrk(cp + 1, " :")))
 		ntokens++;
 
+	if (cpu_minfreq_lock)
+		return 0;
 	/* CPU:value pair */
 	if (!(ntokens % 2))
 		return -EINVAL;
@@ -493,6 +505,8 @@ static int set_cpu_max_freq(const char *buf, const struct kernel_param *kp)
 	while ((cp = strpbrk(cp + 1, " :")))
 		ntokens++;
 
+	if (cpu_maxfreq_lock)
+		return 0;
 	/* CPU:value pair */
 	if (!(ntokens % 2))
 		return -EINVAL;
