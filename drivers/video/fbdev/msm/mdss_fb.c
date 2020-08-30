@@ -86,15 +86,15 @@
  * Time period for fps calulation in micro seconds.
  * Default value is set to 1 sec.
  */
-#define MDP_TIME_PERIOD_CALC_FPS_US	1000000
+#define MDP_TIME_PERIOD_CALC_FPS_US	900000
 
 #define MDSS_BRIGHT_TO_BL_DIM(out, v) do {\
 			out = (12*v*v+1393*v+3060)/4465;\
 			} while (0)
-bool backlight_dimmer = false;
+bool backlight_dimmer = true;
 module_param(backlight_dimmer, bool, 0644);
 
-int backlight_min = 0;
+int backlight_min = 100;
 module_param(backlight_min, int, 0644);
 
 static struct fb_info *fbi_list[MAX_FBI_LIST];
