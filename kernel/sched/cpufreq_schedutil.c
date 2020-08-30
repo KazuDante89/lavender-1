@@ -632,14 +632,14 @@ static int sugov_kthread_create(struct sugov_policy *sg_policy)
 				"sugov:%d",
 				cpumask_first(policy->related_cpus));
 	if (IS_ERR(thread)) {
-		pr_err("failed to create sugov thread: %ld\n", PTR_ERR(thread));
+		pr_debug("failed to create sugov thread: %ld\n", PTR_ERR(thread));
 		return PTR_ERR(thread);
 	}
 
 	ret = sched_setscheduler_nocheck(thread, SCHED_FIFO, &param);
 	if (ret) {
 		kthread_stop(thread);
-		pr_warn("%s: failed to set SCHED_FIFO\n", __func__);
+		pr_debug("%s: failed to set SCHED_FIFO\n", __func__);
 		return ret;
 	}
 
@@ -689,7 +689,7 @@ static void sugov_tunables_save(struct cpufreq_policy *policy,
 	if (!cached) {
 		cached = kzalloc(sizeof(*tunables), GFP_KERNEL);
 		if (!cached) {
-			pr_warn("Couldn't allocate tunables for caching\n");
+			pr_debug("Couldn't allocate tunables for caching\n");
 			return;
 		}
 		for_each_cpu(cpu, policy->related_cpus)
@@ -775,7 +775,7 @@ static int sugov_init(struct cpufreq_policy *policy)
 	} else {
 		unsigned int lat;
 
-                tunables->up_rate_limit_us = LATENCY_MULTIPLIER / 2;
+                tunables->up_rate_limit_us = LATENCY_MULTIPLIER / 1;
                 tunables->down_rate_limit_us = LATENCY_MULTIPLIER * 20;
 		lat = policy->cpuinfo.transition_latency / NSEC_PER_USEC;
 		if (lat) {
@@ -785,7 +785,7 @@ static int sugov_init(struct cpufreq_policy *policy)
 	}
 
 	if (task_is_booster(current))
-		tunables->iowait_boost_enable = false;
+		tunables->iowait_boost_enable = true;
 
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;
@@ -818,7 +818,7 @@ free_sg_policy:
 disable_fast_switch:
 	cpufreq_disable_fast_switch(policy);
 
-	pr_err("initialization failed (error %d)\n", ret);
+	pr_debug("initialization failed (error %d)\n", ret);
 	return ret;
 }
 
