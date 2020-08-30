@@ -77,9 +77,8 @@
 		/* <HZ/12> */
 		qcom,idle-timeout = <8>;
 
-		/* This value enables use of GPU SLUMBER for power savings */
+		/* This value enables use of GPU SLUMBER for power savings
 		qcom,strtstp-sleepwake;
-
 
 		qcom,highest-bank-bit = <14>;
 
