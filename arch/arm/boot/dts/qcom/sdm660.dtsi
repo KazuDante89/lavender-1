@@ -160,7 +160,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x100>;
-                        clock-frequency = <2150400000>;
+                        clock-frequency = <1958400000>;   
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile1>;
@@ -190,7 +190,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x101>;
-                        clock-frequency = <2150400000>;
+                        clock-frequency = <1958400000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile2>;
@@ -216,7 +216,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x102>;
-                        clock-frequency = <2150400000>;
+                        clock-frequency = <1958400000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile3>;
@@ -242,7 +242,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x103>;
-                        clock-frequency = <2150400000>;
+                        clock-frequency = <1958400000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile4>;
@@ -308,8 +308,8 @@
 
 		CPU_COST_0: core-cost0 {
 			busy-cost-data = <
-				1401600 3034
-				1536000 3686
+			    9024000 3034
+				1401600 3686
 				1747200 5105
 			>;
 			idle-cost-data = <
@@ -319,10 +319,10 @@
 
 		CPU_COST_1: core-cost1 {
 			busy-cost-data = <
-				1401600 7789
+			    1113600 5105
+				1401600 7789                          
 				1747200 13766
 				1958400 19758
-				2150400 27509
 			>;
 			idle-cost-data = <
 			        6 6 0 0
@@ -331,9 +331,9 @@
 
 		CLUSTER_COST_0: cluster-cost0 {
 			busy-cost-data = <
-				1401600 40
-				1536000 45
-				1747200 55
+				9024000 14     
+				1401600 29
+				1747200 49
 			>;
 			idle-cost-data = <
 				 41 41 41 0
@@ -342,10 +342,10 @@
 
 		CLUSTER_COST_1: cluster-cost1 {
 			busy-cost-data = <
-				1401600 74
-				1747200 116
-				1958400 157
-				2150400 209
+				1113600 74      
+				1401600 116
+				1747200 157
+				1958400 209
 			>;
 			idle-cost-data = <
 				50 50 50 0
@@ -1310,8 +1310,8 @@
 		qcom,core-dev-table =
 			< 1113600 762 >,
 			< 1401600 3879 >,
-			< 2150400 5931 >,
-			< 2457600 6881 >;
+			< 1958400 5931 >,
+			< 2150400 6881 >;
 	};
 
 	devfreq_cpufreq: devfreq-cpufreq {
@@ -1325,8 +1325,8 @@
 				< 1113600 762 >,
 				< 1401600 2086 >,
 				< 1747200 2929 >,
-				< 2150400 3879 >,
-				< 2457600 6881 >;
+				< 1958400 3879 >,
+				< 2150400 6881 >;
 		};
 	};
 
@@ -1418,7 +1418,7 @@
 			<  1958400000 0x04040066 0x0a510051 0x2 5 >;
 
 		qcom,up-timer = <1000 1000>;
-		qcom,down-timer = <1000 1000>;
+		qcom,down-timer = <700 900>;
 		qcom,set-ret-inactive;
 		qcom,enable-llm-freq-vote;
 		qcom,llm-freq-up-timer = <327675 327675>;
