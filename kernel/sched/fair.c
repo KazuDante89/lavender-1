@@ -5094,7 +5094,7 @@ enqueue_task_fair(struct rq *rq, struct task_struct *p, int flags)
 	 * utilization updates, so do it here explicitly with the IOWAIT flag
 	 * passed.
 	 */
-	if (p->in_iowait)
+	if (p->in_iowait && prefer_idle)
 		cpufreq_update_this_cpu(rq, SCHED_CPUFREQ_IOWAIT);
 
 	for_each_sched_entity(se) {
@@ -5173,6 +5173,9 @@ static void dequeue_task_fair(struct rq *rq, struct task_struct *p, int flags)
 	 */
 	schedtune_dequeue_task(p, cpu_of(rq));
 #endif
+
+	/*if (task_sleep && rq->nr_running == 1)
+		flags |= DEQUEUE_IDLE;*/
 
 	for_each_sched_entity(se) {
 		cfs_rq = cfs_rq_of(se);
