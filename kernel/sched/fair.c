@@ -9155,12 +9155,6 @@ next_group:
 
 }
 
-
-bool prefer_idle = sched_feat(EAS_USE_NEED_IDLE) ?
-				(schedtune_prefer_idle(p) > 0) : 0;
-
-
-
 /**
  * check_asym_packing - Check to see if the group is packed into the
  *			sched doman.
