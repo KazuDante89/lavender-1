@@ -481,7 +481,7 @@ config TCP_CONG_BIC
 
 config TCP_CONG_CUBIC
 	tristate "CUBIC TCP"
-	default y
+	default n
 	---help---
 	This is version 2.0 of BIC-TCP which uses a cubic growth function
 	among other techniques.
@@ -489,7 +489,7 @@ config TCP_CONG_CUBIC
 
 config TCP_CONG_WESTWOOD
 	tristate "TCP Westwood+"
-	default m
+	default y
 	---help---
 	TCP Westwood+ is a sender-side only modification of the TCP Reno
 	protocol stack that optimizes the performance of TCP congestion
@@ -503,7 +503,7 @@ config TCP_CONG_WESTWOOD
 
 config TCP_CONG_HTCP
         tristate "H-TCP"
-        default m
+        default n
 	---help---
 	H-TCP is a send-side only modifications of the TCP Reno
 	protocol stack that optimizes the performance of TCP
@@ -640,35 +640,12 @@ choice
 	  Select the TCP congestion control that will be used by default
 	  for all connections.
 
-	config DEFAULT_BIC
-		bool "Bic" if TCP_CONG_BIC=y
-
 	config DEFAULT_CUBIC
 		bool "Cubic" if TCP_CONG_CUBIC=y
-
-	config DEFAULT_HTCP
-		bool "Htcp" if TCP_CONG_HTCP=y
-
-	config DEFAULT_HYBLA
-		bool "Hybla" if TCP_CONG_HYBLA=y
-
-	config DEFAULT_VEGAS
-		bool "Vegas" if TCP_CONG_VEGAS=y
-
-	config DEFAULT_VENO
-		bool "Veno" if TCP_CONG_VENO=y
 
 	config DEFAULT_WESTWOOD
 		bool "Westwood" if TCP_CONG_WESTWOOD=y
 
-	config DEFAULT_DCTCP
-		bool "DCTCP" if TCP_CONG_DCTCP=y
-
-	config DEFAULT_CDG
-		bool "CDG" if TCP_CONG_CDG=y
-
-	config DEFAULT_RENO
-		bool "Reno"
 endchoice
 
 endif
@@ -676,21 +653,13 @@ endif
 config TCP_CONG_CUBIC
 	tristate
 	depends on !TCP_CONG_ADVANCED
-	default y
+	default n
 
 config DEFAULT_TCP_CONG
 	string
-	default "bic" if DEFAULT_BIC
 	default "cubic" if DEFAULT_CUBIC
-	default "htcp" if DEFAULT_HTCP
-	default "hybla" if DEFAULT_HYBLA
-	default "vegas" if DEFAULT_VEGAS
 	default "westwood" if DEFAULT_WESTWOOD
-	default "veno" if DEFAULT_VENO
-	default "reno" if DEFAULT_RENO
-	default "dctcp" if DEFAULT_DCTCP
-	default "cdg" if DEFAULT_CDG
-	default "cubic"
+	default "westwood"
 
 config TCP_MD5SIG
 	bool "TCP: MD5 Signature Option support (RFC2385)"
