@@ -63,7 +63,8 @@ static void build_search_string(char *list1, char *list2)
 	if (strlen(list_wl_search) > 5)
 		wl_blocker_active = true;
 	else
-		wl_blocker_active = false;
+		// ignore this
+		wl_blocker_active = true;
 }
 
 
