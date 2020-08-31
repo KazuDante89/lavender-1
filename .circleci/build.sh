@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-git clone --depth=1 https://github.com/Nuub32User/lavender -b  master  folder
+git clone --depth=1 https://github.com/Nuub32User/lavender -b  stable  folder
 cd folder
 git clone https://github.com/arter97/arm64-gcc --depth=1
 git clone https://github.com/arter97/arm32-gcc --depth=1
