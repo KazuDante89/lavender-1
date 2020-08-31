@@ -87,7 +87,7 @@ static void power_suspend(struct work_struct *work)
 	int abort = 0;
 
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] entering suspend...\n");
+	pr_debug("[POWERSUSPEND] entering suspend...\n");
 	#endif
 	mutex_lock(&power_suspend_lock);
 	spin_lock_irqsave(&state_lock, irqflags);
@@ -99,7 +99,7 @@ static void power_suspend(struct work_struct *work)
 		goto abort_suspend;
 
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] suspending...\n");
+	pr_debug("[POWERSUSPEND] suspending...\n");
 	#endif
 	list_for_each_entry(pos, &power_suspend_handlers, link) {
 		if (pos->suspend != NULL) {
@@ -107,7 +107,7 @@ static void power_suspend(struct work_struct *work)
 		}
 	}
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] suspend completed.\n");
+	pr_debug("[POWERSUSPEND] suspend completed.\n");
 	#endif
 abort_suspend:
 	mutex_unlock(&power_suspend_lock);
@@ -120,7 +120,7 @@ static void power_resume(struct work_struct *work)
 	int abort = 0;
 
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] entering resume...\n");
+	pr_debug("[POWERSUSPEND] entering resume...\n");
 	#endif
 	mutex_lock(&power_suspend_lock);
 	spin_lock_irqsave(&state_lock, irqflags);
@@ -132,7 +132,7 @@ static void power_resume(struct work_struct *work)
 		goto abort_resume;
 
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] resuming...\n");
+	pr_debug("[POWERSUSPEND] resuming...\n");
 	#endif
 	list_for_each_entry_reverse(pos, &power_suspend_handlers, link) {
 		if (pos->resume != NULL) {
@@ -140,7 +140,7 @@ static void power_resume(struct work_struct *work)
 		}
 	}
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] resume completed.\n");
+	pr_debug("[POWERSUSPEND] resume completed.\n");
 	#endif
 abort_resume:
 	mutex_unlock(&power_suspend_lock);
@@ -155,13 +155,13 @@ void set_power_suspend_state(int new_state)
 	spin_lock_irqsave(&state_lock, irqflags);
 	if (state == POWER_SUSPEND_INACTIVE && new_state == POWER_SUSPEND_ACTIVE) {
 		#ifdef POWER_SUSPEND_DEBUG
-		pr_info("[POWERSUSPEND] state activated.\n");
+		pr_debug("[POWERSUSPEND] state activated.\n");
 		#endif
 		state = new_state;
 		queue_work(suspend_work_queue, &power_suspend_work);
 	} else if (state == POWER_SUSPEND_ACTIVE && new_state == POWER_SUSPEND_INACTIVE) {
 		#ifdef POWER_SUSPEND_DEBUG
-		pr_info("[POWERSUSPEND] state deactivated.\n");
+		pr_debug("[POWERSUSPEND] state deactivated.\n");
 		#endif
 		state = new_state;
 		queue_work(suspend_work_queue, &power_resume_work);
@@ -172,7 +172,7 @@ void set_power_suspend_state(int new_state)
 void set_power_suspend_state_autosleep_hook(int new_state)
 {
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] autosleep resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
+	pr_debug("[POWERSUSPEND] autosleep resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
 	#endif
 	// Yank555.lu : Only allow autosleep hook changes in autosleep & hybrid mode
 	if (mode == POWER_SUSPEND_AUTOSLEEP || mode == POWER_SUSPEND_HYBRID)
@@ -185,7 +185,7 @@ EXPORT_SYMBOL(set_power_suspend_state_autosleep_hook);
 void set_power_suspend_state_panel_hook(int new_state)
 {
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] panel resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
+	pr_debug("[POWERSUSPEND] panel resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
 	#endif
 	// Yank555.lu : Only allow autosleep hook changes in autosleep & hybrid mode
 	if (mode == POWER_SUSPEND_PANEL || mode == POWER_SUSPEND_HYBRID)
@@ -214,7 +214,7 @@ static ssize_t power_suspend_state_store(struct kobject *kobj,
 	sscanf(buf, "%d\n", &new_state);
 
 	#ifdef POWER_SUSPEND_DEBUG
-	pr_info("[POWERSUSPEND] userspace resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
+	pr_debug("[POWERSUSPEND] userspace resquests %s.\n", new_state == POWER_SUSPEND_ACTIVE ? "sleep" : "wakeup");
 	#endif
 	if(new_state == POWER_SUSPEND_ACTIVE || new_state == POWER_SUSPEND_INACTIVE)
 		set_power_suspend_state(new_state);
@@ -292,7 +292,7 @@ static int __init power_suspend_init(void)
         power_suspend_kobj = kobject_create_and_add("power_suspend",
 				kernel_kobj);
         if (!power_suspend_kobj) {
-                pr_err("%s kobject create failed!\n", __FUNCTION__);
+                pr_debug("%s kobject create failed!\n", __FUNCTION__);
                 return -ENOMEM;
         }
 
@@ -300,7 +300,7 @@ static int __init power_suspend_init(void)
 			&power_suspend_attr_group);
 
         if (sysfs_result) {
-                pr_info("%s group create failed!\n", __FUNCTION__);
+                pr_debug("%s group create failed!\n", __FUNCTION__);
                 kobject_put(power_suspend_kobj);
                 return -ENOMEM;
         }
