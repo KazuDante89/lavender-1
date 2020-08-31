@@ -50,7 +50,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x0>;
-                        clock-frequency = <1843200000>;     
+        clock-frequency = <1843200000>;     
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -82,7 +82,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x1>;
-                        clock-frequency = <1843200000>;
+        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -108,7 +108,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x2>;
-                        clock-frequency = <1843200000>;
+        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -134,7 +134,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x3>;
-                        clock-frequency = <1843200000>;
+        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -160,7 +160,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x100>;
-                        clock-frequency = <1804800000>;   
+        clock-frequency = <1804800000>;   
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile1>;
@@ -190,7 +190,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x101>;
-                        clock-frequency = <1804800000>;
+        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile2>;
@@ -216,7 +216,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x102>;
-                        clock-frequency = <1804800000>;
+        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile3>;
@@ -242,7 +242,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x103>;
-                        clock-frequency = <1804800000>;
+        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile4>;
@@ -899,7 +899,7 @@
 	qcom,msm-thermal {
 		compatible = "qcom,msm-thermal";
 		qcom,sensor-id = <1>;
-		qcom,poll-ms = <100>;
+		qcom,poll-ms = <250>;
 		qcom,therm-reset-temp = <115>;
 		qcom,core-limit-temp = <70>;
 		qcom,core-temp-hysteresis = <10>;
@@ -1310,7 +1310,7 @@
 		qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 		qcom,target-dev = <&memlat_cpu4>;
 		qcom,core-dev-table =
-			< 1113600 762 >,
+			< 902400 762 >,
 			< 1401600 3879 >,
 			< 1804800 5931 >;
 	};
@@ -1323,7 +1323,7 @@
 				< 1401600 1571 >,
 				< 1881600 2929 >;
 			cpu-to-dev-map-4 =
-				< 1113600 762 >,
+				< 902400 762 >,
 				< 1401600 2086 >,
 				< 1747200 2929 >,
 				< 1804800 3879 >;
