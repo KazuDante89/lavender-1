@@ -50,7 +50,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x0>;
-                        clock-frequency = <1804800000>;    
+                        clock-frequency = <1843200000>;     
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -82,7 +82,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x1>;
-                        clock-frequency = <1804800000>;
+                        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -108,7 +108,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x2>;
-                        clock-frequency = <1804800000>;
+                        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -134,7 +134,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x3>;
-                        clock-frequency = <1804800000>;
+                        clock-frequency = <1843200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -160,7 +160,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x100>;
-                        clock-frequency = <1958400000>;   
+                        clock-frequency = <1804800000>;   
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile1>;
@@ -190,7 +190,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x101>;
-                        clock-frequency = <1958400000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile2>;
@@ -216,7 +216,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x102>;
-                        clock-frequency = <1958400000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile3>;
@@ -242,7 +242,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x103>;
-                        clock-frequency = <1958400000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile4>;
@@ -308,9 +308,10 @@
 
 		CPU_COST_0: core-cost0 {
 			busy-cost-data = <
-			    9024000 3034
-				1401600 3686
+			    1113600 2065
+				1401600 3034
 				1747200 5105
+				1843200 5959
 			>;
 			idle-cost-data = <
 				4 4 0 0
@@ -319,10 +320,10 @@
 
 		CPU_COST_1: core-cost1 {
 			busy-cost-data = <
-			    1113600 5105
-				1401600 7789                          
+			    1113600 4943
+				1401600 7789
 				1747200 13766
-				1804800 19758
+                1804800 15181	
 			>;
 			idle-cost-data = <
 			        6 6 0 0
@@ -331,9 +332,10 @@
 
 		CLUSTER_COST_0: cluster-cost0 {
 			busy-cost-data = <
-				9024000 14     
-				1401600 29
-				1747200 49
+				1113600 32
+				1401600 40
+				1747200 45
+				1843200 55
 			>;
 			idle-cost-data = <
 				 41 41 41 0
@@ -342,10 +344,10 @@
 
 		CLUSTER_COST_1: cluster-cost1 {
 			busy-cost-data = <
-				1113600 74      
-				1401600 116
-				1747200 157
-				1804800 209
+				1113600 54
+				1401600 74
+				1747200 116
+                1804800 125
 			>;
 			idle-cost-data = <
 				50 50 50 0
@@ -897,7 +899,7 @@
 	qcom,msm-thermal {
 		compatible = "qcom,msm-thermal";
 		qcom,sensor-id = <1>;
-		qcom,poll-ms = <150>;
+		qcom,poll-ms = <300>;
 		qcom,therm-reset-temp = <115>;
 		qcom,core-limit-temp = <70>;
 		qcom,core-temp-hysteresis = <10>;
@@ -1416,7 +1418,7 @@
 			<  1958400000 0x04040066 0x0a510051 0x2 5 >;
 
 		qcom,up-timer = <1000 1000>;
-		qcom,down-timer = <500 500>;
+		qcom,down-timer = <1000 500>;
 		qcom,set-ret-inactive;
 		qcom,enable-llm-freq-vote;
 		qcom,llm-freq-up-timer = <327675 327675>;
@@ -1462,13 +1464,13 @@
 		qcom,governor-per-policy;
 
 		qcom,cpufreq-table-0 =
-		    < 9024000 >,
+			< 1113600 >,
 			< 1401600 >,
-			< 1536000 >,
-			< 1747200 >;
+			< 1747200 >,
+			< 1843200 >;
 
 		qcom,cpufreq-table-4 =
-		    < 1113600 >,
+			< 1113600 >,
 			< 1401600 >,
 			< 1747200 >,
 			< 1804800 >;
