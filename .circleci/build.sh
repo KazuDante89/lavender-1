@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-git clone --depth=1 https://github.com/Nuub32User/lavender -b  master  folder
+git clone --depth=1 https://github.com/Nuub32User/lavender -b  test-freq  folder
 cd folder
 git clone https://github.com/arter97/arm64-gcc --depth=1
 git clone https://github.com/arter97/arm32-gcc --depth=1
@@ -53,7 +53,7 @@ function compile() {
 # Zipping (Using Anykernel Repo)
 function zipping() {
     cd AnyKernel || exit 1
-    zip -r9 Experimental-Kernel-V1.0-${TANGGAL}.zip *
+    zip -r9 Experimental-Kernel-Test-${TANGGAL}.zip *
     cd .. 
 }
 sendinfo
