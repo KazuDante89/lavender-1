@@ -489,7 +489,7 @@ config TCP_CONG_CUBIC
 
 config TCP_CONG_WESTWOOD
 	tristate "TCP Westwood+"
-	default y
+	default m
 	---help---
 	TCP Westwood+ is a sender-side only modification of the TCP Reno
 	protocol stack that optimizes the performance of TCP congestion
@@ -646,6 +646,8 @@ choice
 	config DEFAULT_WESTWOOD
 		bool "Westwood" if TCP_CONG_WESTWOOD=y
 
+	config DEFAULT_CUBIC
+		bool "Cubic"
 endchoice
 
 endif
@@ -653,13 +655,14 @@ endif
 config TCP_CONG_CUBIC
 	tristate
 	depends on !TCP_CONG_ADVANCED
-	default n
+	default y
 
 config DEFAULT_TCP_CONG
 	string
 	default "cubic" if DEFAULT_CUBIC
 	default "westwood" if DEFAULT_WESTWOOD
-	default "westwood"
+	default "cdg" if DEFAULT_CDG
+	default "cubic"
 
 config TCP_MD5SIG
 	bool "TCP: MD5 Signature Option support (RFC2385)"
