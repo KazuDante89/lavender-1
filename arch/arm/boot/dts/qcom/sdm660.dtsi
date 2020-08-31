@@ -50,7 +50,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x0>;
-                        clock-frequency = <1747200000>;
+                        clock-frequency = <1804800000>;    
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -82,7 +82,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x1>;
-                        clock-frequency = <1747200000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -108,7 +108,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x2>;
-                        clock-frequency = <1747200000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -134,7 +134,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x3>;
-                        clock-frequency = <1747200000>;
+                        clock-frequency = <1804800000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -322,7 +322,7 @@
 			    1113600 5105
 				1401600 7789                          
 				1747200 13766
-				1958400 19758
+				1804800 19758
 			>;
 			idle-cost-data = <
 			        6 6 0 0
@@ -345,7 +345,7 @@
 				1113600 74      
 				1401600 116
 				1747200 157
-				1958400 209
+				1804800 209
 			>;
 			idle-cost-data = <
 				50 50 50 0
@@ -1310,7 +1310,7 @@
 		qcom,core-dev-table =
 			< 1113600 762 >,
 			< 1401600 3879 >,
-			< 1958400 5931 >;
+			< 1804800 5931 >;
 	};
 
 	devfreq_cpufreq: devfreq-cpufreq {
@@ -1324,7 +1324,7 @@
 				< 1113600 762 >,
 				< 1401600 2086 >,
 				< 1747200 2929 >,
-				< 1958400 3879 >;
+				< 1804800 3879 >;
 		};
 	};
 
@@ -1471,7 +1471,7 @@
 		    < 1113600 >,
 			< 1401600 >,
 			< 1747200 >,
-			< 1958400 >;
+			< 1804800 >;
 	};
 
 	sdhc_1: sdhci@c0c4000 {
