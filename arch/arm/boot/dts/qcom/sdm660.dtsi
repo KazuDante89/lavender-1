@@ -50,7 +50,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x0>;
-        clock-frequency = <1843200000>;     
+        clock-frequency = <1747200000>;     
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -59,6 +59,7 @@
 			qcom,ea = <&ea0>;
 			efficiency = <1024>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -82,7 +83,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x1>;
-        clock-frequency = <1843200000>;
+        clock-frequency = <1747200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -91,6 +92,7 @@
 			qcom,ea = <&ea1>;
 			efficiency = <1024>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L1_I_1: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x9040>;
@@ -108,7 +110,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x2>;
-        clock-frequency = <1843200000>;
+        clock-frequency = <1747200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -117,6 +119,7 @@
 			qcom,ea = <&ea2>;
 			efficiency = <1024>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L1_I_2: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x9040>;
@@ -134,7 +137,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x3>;
-        clock-frequency = <1843200000>;
+        clock-frequency = <1747200000>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1024>;
 			qcom,limits-info = <&mitigation_profile0>;
@@ -143,6 +146,7 @@
 			qcom,ea = <&ea3>;
 			efficiency = <1024>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L1_I_3: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x9040>;
@@ -160,7 +164,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x100>;
-        clock-frequency = <1804800000>;   
+        clock-frequency = <1804800>;    
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile1>;
@@ -169,6 +173,7 @@
 			qcom,ea = <&ea4>;
 			efficiency = <1638>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L2_1: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -190,7 +195,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x101>;
-        clock-frequency = <1804800000>;
+        clock-frequency = <1804800>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile2>;
@@ -199,6 +204,7 @@
 			qcom,ea = <&ea5>;
 			efficiency = <1638>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L1_I_101: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x12000>;
@@ -216,7 +222,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x102>;
-        clock-frequency = <1804800000>;
+        clock-frequency = <1804800>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile3>;
@@ -225,6 +231,7 @@
 			qcom,ea = <&ea6>;
 			efficiency = <1638>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L1_I_102: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x12000>;
@@ -242,7 +249,7 @@
 			device_type = "cpu";
 			compatible = "arm,kryo";
 			reg = <0x0 0x103>;
-        clock-frequency = <1804800000>;
+        clock-frequency = <1804800>;
 			enable-method = "psci";
 			capacity-dmips-mhz = <1638>;
 			qcom,limits-info = <&mitigation_profile4>;
@@ -251,6 +258,7 @@
 			qcom,ea = <&ea7>;
 			efficiency = <1638>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L1_I_103: l1-icache {
 				compatible = "arm,arch-cache";
 				qcom,dump-size = <0x12000>;
@@ -308,10 +316,10 @@
 
 		CPU_COST_0: core-cost0 {
 			busy-cost-data = <
-			    902400 1579
 			    1113600 2065
-				1401600 3034
-				1843200 5959
+			    1401600 3034
+				1536000 3686
+				1747200 5105
 			>;
 			idle-cost-data = <
 				4 4 0 0
@@ -332,10 +340,10 @@
 
 		CLUSTER_COST_0: cluster-cost0 {
 			busy-cost-data = <
-			    902400 27
 				1113600 32
 				1401600 40
-				1843200 55
+				1536000 45
+				1747200 55
 			>;
 			idle-cost-data = <
 				 41 41 41 0
@@ -899,7 +907,7 @@
 	qcom,msm-thermal {
 		compatible = "qcom,msm-thermal";
 		qcom,sensor-id = <1>;
-		qcom,poll-ms = <250>;
+		qcom,poll-ms = <50>;
 		qcom,therm-reset-temp = <115>;
 		qcom,core-limit-temp = <70>;
 		qcom,core-temp-hysteresis = <10>;
@@ -1310,9 +1318,9 @@
 		qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 		qcom,target-dev = <&memlat_cpu4>;
 		qcom,core-dev-table =
-			< 902400 762 >,
+            < 1113600 762 >,
 			< 1401600 3879 >,
-			< 1804800 5931 >;
+            < 1804800 5931 >;		
 	};
 
 	devfreq_cpufreq: devfreq-cpufreq {
@@ -1466,8 +1474,8 @@
 		qcom,cpufreq-table-0 =
 			< 1113600 >,
 			< 1401600 >,
-			< 1747200 >,
-			< 1843200 >;
+			< 1536000 >,
+			< 1747200 >;
 
 		qcom,cpufreq-table-4 =
 			< 1113600 >,
