@@ -72,7 +72,7 @@
 		qcom,initial-pwrlevel = <7>;
      
         /* This value tells the time in milliseconds for entering deeper power state. NOTE - Don't set it it below 20 in Lavender */
-        qcom,deep-nap-timeout = <30>;
+        qcom,deep-nap-timeout = <20>;
      
 		/* <HZ/12> */
 		qcom,idle-timeout = <8>;
@@ -375,7 +375,7 @@
 
 				qcom,speed-bin = <146>;
 
-				qcom,initial-pwrlevel = <6>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* TURBO */
 				qcom,gpu-pwrlevel@0 {
@@ -456,7 +456,7 @@
 
 				qcom,speed-bin = <135>;
 
-				qcom,initial-pwrlevel = <5>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@0 {
@@ -528,7 +528,7 @@
 
 				qcom,speed-bin = <78>;
 
-				qcom,initial-pwrlevel = <2>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* SVS */
 				qcom,gpu-pwrlevel@0 {
@@ -573,7 +573,7 @@
 
 				qcom,speed-bin = <90>;
 
-				qcom,initial-pwrlevel = <3>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* SVS_L1 */
 				qcom,gpu-pwrlevel@0 {
@@ -627,7 +627,7 @@
 
 				qcom,speed-bin = <122>;
 
-				qcom,initial-pwrlevel = <4>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* NOM */
 				qcom,gpu-pwrlevel@0 {
