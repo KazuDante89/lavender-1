@@ -820,57 +820,33 @@ static ssize_t show_scaling_cur_freq(struct cpufreq_policy *policy, char *buf)
 static int cpufreq_set_policy(struct cpufreq_policy *policy,
 				struct cpufreq_policy *new_policy);
 
-extern bool cpu_minfreq_lock;
-static ssize_t store_scaling_min_freq(struct cpufreq_policy *policy, const char *buf, size_t count) {
-
-	int ret, temp;
-	struct cpufreq_policy new_policy;
-
-	memcpy(&new_policy, policy, sizeof(*policy));
-	new_policy.min = policy->user_policy.min;
-	new_policy.max = policy->user_policy.max;
-
-	ret = sscanf(buf, "%u", &new_policy.min);
-	if (ret != 1)
-		return -EINVAL;
-
-	if (cpu_minfreq_lock)
-		return count;
-
-	temp = new_policy.min;
-	ret = cpufreq_set_policy(policy, &new_policy);
-	if (!ret)
-		policy->user_policy.min = temp;
-
-	return ret ? ret : count;
-}
-
-extern bool cpu_oc;
-extern bool cpu_maxfreq_lock;
-static ssize_t store_scaling_max_freq(struct cpufreq_policy *policy, const char *buf, size_t count) {									\
-
-	int ret, temp;
-	struct cpufreq_policy new_policy;
-
-	memcpy(&new_policy, policy, sizeof(*policy));
-	new_policy.min = policy->user_policy.min;
-	new_policy.max = policy->user_policy.max;
-
-	ret = sscanf(buf, "%u", &new_policy.max);
-	if (ret != 1)
-		return -EINVAL;
-
-	if (cpu_maxfreq_lock)
-		return count;
-	if (cpu_oc) {
-		temp = new_policy.max;
-		ret = cpufreq_set_policy(policy, &new_policy);
-		if (!ret)
-			policy->user_policy.max = temp;
-		return ret ? ret : count;
-	} else {
-		return count;
-	}
+/**
+ * cpufreq_per_cpu_attr_write() / store_##file_name() - sysfs write access
+ */
+#define store_one(file_name, object)			\
+static ssize_t store_##file_name					\
+(struct cpufreq_policy *policy, const char *buf, size_t count)		\
+{									\
+	int ret, temp;							\
+	struct cpufreq_policy new_policy;				\
+									\
+	if (&policy->object == &policy->min)				\
+		return count;						\
+									\
+	memcpy(&new_policy, policy, sizeof(*policy));			\
+	new_policy.min = policy->user_policy.min;			\
+	new_policy.max = policy->user_policy.max;			\
+									\
+	ret = sscanf(buf, "%u", &new_policy.object);			\
+	if (ret != 1)							\
+		return -EINVAL;						\
+									\
+	temp = new_policy.object;					\
+	ret = cpufreq_set_policy(policy, &new_policy);		\
+	if (!ret)							\
+		policy->user_policy.object = temp;			\
+									\
+	return ret ? ret : count;					\
 }
 
 store_one(scaling_min_freq, min);
