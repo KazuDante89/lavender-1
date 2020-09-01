@@ -105,14 +105,14 @@ static int msm_cpufreq_target(struct cpufreq_policy *policy,
 
 	table = cpufreq_frequency_get_table(policy->cpu);
 	if (!table) {
-		pr_err("cpufreq: Failed to get frequency table for CPU%u\n",
+		pr_debug("cpufreq: Failed to get frequency table for CPU%u\n",
 		       policy->cpu);
 		ret = -ENODEV;
 		goto done;
 	}
 	if (cpufreq_frequency_table_target(policy, table, target_freq, relation,
 			&index)) {
-		pr_err("cpufreq: invalid target_freq: %d\n", target_freq);
+		pr_debug("cpufreq: invalid target_freq: %d\n", target_freq);
 		ret = -EINVAL;
 		goto done;
 	}
@@ -168,7 +168,7 @@ static int msm_cpufreq_init(struct cpufreq_policy *policy)
 
 	ret = cpufreq_table_validate_and_show(policy, table);
 	if (ret) {
-		pr_err("cpufreq: failed to get policy min/max\n");
+		pr_debug("cpufreq: failed to get policy min/max\n");
 		return ret;
 	}
 
@@ -178,7 +178,7 @@ static int msm_cpufreq_init(struct cpufreq_policy *policy)
 	    CPUFREQ_RELATION_H, &index) &&
 	    cpufreq_frequency_table_target(policy, table, cur_freq,
 	    CPUFREQ_RELATION_L, &index)) {
-		pr_info("cpufreq: cpu%d at invalid freq: %d\n",
+		pr_debug("cpufreq: cpu%d at invalid freq: %d\n",
 				policy->cpu, cur_freq);
 		return -EINVAL;
 	}
@@ -294,10 +294,10 @@ static int msm_cpufreq_resume(void)
 			continue;
 		ret = cpufreq_update_policy(cpu);
 		if (ret)
-			pr_info("cpufreq: Current frequency violates policy min/max for CPU%d\n",
+			pr_debug("cpufreq: Current frequency violates policy min/max for CPU%d\n",
 			       cpu);
 		else
-			pr_info("cpufreq: Frequency violation fixed for CPU%d\n",
+			pr_debug("cpufreq: Frequency violation fixed for CPU%d\n",
 				cpu);
 	}
 	put_online_cpus();
