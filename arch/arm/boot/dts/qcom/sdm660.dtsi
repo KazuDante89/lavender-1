@@ -316,6 +316,7 @@
 
 		CPU_COST_0: core-cost0 {
 			busy-cost-data = <
+			    902400 1579
 			    1113600 2065
 			    1401600 3034
 				1536000 3686
@@ -340,6 +341,7 @@
 
 		CLUSTER_COST_0: cluster-cost0 {
 			busy-cost-data = <
+			    902400 27
 				1113600 32
 				1401600 40
 				1536000 45
@@ -701,7 +703,7 @@
 		qcom,bark-time = <11000>;
 		qcom,pet-time = <10000>;
 		qcom,ipi-ping;
-		qcom,wakeup-enable;
+		qcom,wakeup-enable; /* Airstrike soon on watchdog adjustments */
 		qcom,scandump-size = <0x40000>;
 	};
 
@@ -1425,8 +1427,8 @@
 			<  1747200000 0x0404005b 0x09480048 0x2 4 >,
 			<  1804800000 0x04040066 0x0a510051 0x2 5 >;
 
-		qcom,up-timer = <1000 1000>;
-		qcom,down-timer = <1000 1000>;
+		qcom,up-timer = <928 928>;
+		qcom,down-timer = <450 450>;
 		qcom,set-ret-inactive;
 		qcom,enable-llm-freq-vote;
 		qcom,llm-freq-up-timer = <327675 327675>;
@@ -1472,6 +1474,7 @@
 		qcom,governor-per-policy;
 
 		qcom,cpufreq-table-0 =
+		    < 902400 >,
 			< 1113600 >,
 			< 1401600 >,
 			< 1536000 >,
