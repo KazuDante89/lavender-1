@@ -907,9 +907,9 @@
 	qcom,msm-thermal {
 		compatible = "qcom,msm-thermal";
 		qcom,sensor-id = <1>;
-		qcom,poll-ms = <50>;
+		qcom,poll-ms = <70>;  
 		qcom,therm-reset-temp = <115>;
-		qcom,core-limit-temp = <70>;
+		qcom,core-limit-temp = <45>;
 		qcom,core-temp-hysteresis = <10>;
 		qcom,hotplug-temp = <105>;
 		qcom,hotplug-temp-hysteresis = <20>;
