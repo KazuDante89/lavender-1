@@ -4973,7 +4973,7 @@ static void kgsl_core_exit(void)
 static int __init kgsl_core_init(void)
 {
 	int result = 0;
-	     struct sched_param param = { .sched_priority = MAX_RT_PRIO / 16 };
+	     struct sched_param param = { .sched_priority = MAX_RT_PRIO / 2 };
 
 	/* alloc major and minor device numbers */
 	result = alloc_chrdev_region(&kgsl_driver.major, 0, KGSL_DEVICE_MAX,
@@ -5046,7 +5046,7 @@ static int __init kgsl_core_init(void)
 		&kgsl_driver.worker, "kgsl_worker_thread");
 
 	if (IS_ERR(kgsl_driver.worker_thread)) {
-		pr_err("unable to start kgsl thread\n");
+		pr_debug("unable to start kgsl thread\n");
 		goto err;
 	}
 
