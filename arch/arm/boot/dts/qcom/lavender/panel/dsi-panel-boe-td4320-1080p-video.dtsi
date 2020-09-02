@@ -192,27 +192,27 @@
 		];
 
 		qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
-		qcom,mdss-dsi-off-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-ce-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-ce-off-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-srgb-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-srgb-off-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-off-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-movie-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-still-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-gamma-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-hbm1-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-hbm2-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-hbm3-on-command-state = "dsi_hs_mode";
-		qcom,mdss-dsi-hbm-off-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-ce-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-ce-off-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-srgb-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-srgb-off-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-cabc-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-cabc-off-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-cabc-movie-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-cabc-still-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-gamma-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-hbm1-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-hbm2-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-hbm3-on-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 		qcom,mdss-dsi-reset-sequence = <1 1>, <0 5>, <1 30>;
 		qcom,mdss-dsi-tx-eot-append;
 		qcom,mdss-dsi-post-init-delay = <1>;
 
 		qcom,mdss-dsi-panel-status-command = [06 01 00 01 05 00 01 0A];
-		qcom,mdss-dsi-panel-status-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 		qcom,mdss-dsi-panel-status-read-length = <1>;
 		qcom,mdss-dsi-panel-status-value = <0x1c>;
@@ -223,7 +223,7 @@
 			808302432 811656384>;
 		qcom,mdss-dsi-pan-enable-dynamic-fps;
 		qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
- 
+
 		cm,mdss-livedisplay-cabc-cmd = [
 				15 01 00 00 00 00 02 55 00
 		];
