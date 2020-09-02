@@ -775,8 +775,8 @@ static int sugov_init(struct cpufreq_policy *policy)
 	} else {
 		unsigned int lat;
 
-                tunables->up_rate_limit_us = LATENCY_MULTIPLIER / 1;
-                tunables->down_rate_limit_us = LATENCY_MULTIPLIER * 20;
+                tunables->up_rate_limit_us = LATENCY_MULTIPLIER / 2; /* Let it go into 2x case*/
+                tunables->down_rate_limit_us = LATENCY_MULTIPLIER * 20; /* Don't worry re, It'll match with environment */
 		lat = policy->cpuinfo.transition_latency / NSEC_PER_USEC;
 		if (lat) {
                         tunables->up_rate_limit_us *= lat;
@@ -785,7 +785,7 @@ static int sugov_init(struct cpufreq_policy *policy)
 	}
 
 	if (task_is_booster(current))
-		tunables->iowait_boost_enable = true;
+		tunables->iowait_boost_enable = false; 
 
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;
