@@ -19,7 +19,7 @@ function sendinfo() {
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
-        -d text="<b>Crysis Kernel</b>%0ABuild Status : SUCCESS%0ALast Commit Info - <code>$(git log --pretty=format:'"%h : %s"' -1)</code>"
+        -d text="<b>Crysis Kernel</b>%0ABuild Status : Compiling...%0ALast Commit Info - <code>$(git log --pretty=format:'"%h : %s"' -1)</code>"
 }
 # Push kernel to Telegram Channel/Group
 function push() {
@@ -29,7 +29,13 @@ function push() {
         -F chat_id="$chat_id" \
         -F "disable_web_page_preview=true" \
         -F "parse_mode=html" \
-        -F caption="Enjoy Lyf Now"
+        -F caption="Completed"
+}
+# sticker plox
+function sticker() {
+    curl -s -X POST "https://api.telegram.org/bot$token/sendSticker" \
+        -d sticker="https://chpic.su/_data/stickers/m/MadiAnime/MadiAnime_003.webp" \
+        -d chat_id=$chat_id
 }
 # Broke the process on Error countup check
 function finerr() {
