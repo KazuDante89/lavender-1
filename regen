@@ -1,0 +1,7 @@
+export ARCH=arm64
+make lavender_defconfig
+cp .config arch/arm64/configs/lavended_defconfig
+git add arch/arm64/configs/lavended_defconfig
+git commit -asm "defconfig: Refreshed"
+git config credential.helper store
+git push
