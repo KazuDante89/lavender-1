@@ -3088,8 +3088,8 @@ static int clk_osm_acd_init(struct clk_osm *c)
 
 static unsigned long init_rate = 300000000;
 static unsigned long osm_clk_init_rate = 200000000;
-static unsigned long pwrcl_boot_rate = 1401600000;
-static unsigned long perfcl_boot_rate = 1747200000;
+static unsigned long pwrcl_boot_rate = 1113600000;
+static unsigned long perfcl_boot_rate = 1401600000;
 
 static int clk_cpu_osm_driver_probe(struct platform_device *pdev)
 {
@@ -3100,8 +3100,8 @@ static int clk_cpu_osm_driver_probe(struct platform_device *pdev)
 	struct clk *ext_xo_clk, *ext_hmss_gpll0_clk_src;
 	struct device *dev = &pdev->dev;
 	struct clk_onecell_data *clk_data;
-	char perfclspeedbinstr[] = "qcom,perfcl-speedbin1-v0";
-	char pwrclspeedbinstr[] = "qcom,pwrcl-speedbin1-v0";
+	char perfclspeedbinstr[] = "qcom,perfcl-speedbin0-v0";
+	char pwrclspeedbinstr[] = "qcom,pwrcl-speedbin0-v0";
 
 	/*
 	 * Require the RPM-XO clock and GCC-HMSS-GPLL0 clocks to be registererd
