@@ -1417,8 +1417,8 @@
 			<  1747200000 0x0404005b 0x09480048 0x2 4 >,
 			<  1958400000 0x04040066 0x0a510051 0x2 5 >;
 
-		qcom,up-timer = <2000 2000>;
-		qcom,down-timer = <2000 2000>;
+		qcom,up-timer = <100 100>;
+		qcom,down-timer = <100 100>;
 		qcom,set-ret-inactive;
 		qcom,enable-llm-freq-vote;
 		qcom,llm-freq-up-timer = <327675 327675>;
@@ -1429,7 +1429,7 @@
 		qcom,cc-reads = <10>;
 		qcom,cc-delay = <5>;
 		qcom,cc-factor = <100>;
-		qcom,osm-clk-rate = <400000000>;
+		qcom,osm-clk-rate = <100000000>;
 		qcom,xo-clk-rate = <19200000>;
 
 		qcom,l-val-base = <0x17916004 0x17816004>;
