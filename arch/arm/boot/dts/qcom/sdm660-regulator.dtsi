@@ -241,7 +241,7 @@
 			qcom,proxy-consumer-enable;
 			qcom,proxy-consumer-current = <14000>;
 			regulator-min-microvolt = <1780000>;
-			regulator-max-microvolt = <1950000>;
+			regulator-max-microvolt = <1780000>;
 			status = "okay";
 		};
 	};
@@ -250,7 +250,7 @@
 		status = "okay";
 		pm660_l11: regulator-l11 {
 			regulator-min-microvolt = <1780000>;
-			regulator-max-microvolt = <1950000>;
+			regulator-max-microvolt = <1780000>;
 			status = "okay";
 		};
 	};
@@ -259,7 +259,7 @@
 		status = "okay";
 		pm660_l12: regulator-l12 {
 			regulator-min-microvolt = <1780000>;
-			regulator-max-microvolt = <1950000>;
+			regulator-max-microvolt = <1780000>;
 			status = "okay";
 		};
 	};
@@ -268,7 +268,7 @@
 		status = "okay";
 		pm660_l13: regulator-l13 {
 			regulator-min-microvolt = <1780000>;
-			regulator-max-microvolt = <1950000>;
+			regulator-max-microvolt = <1780000>;
 			status = "okay";
 		};
 	};
@@ -584,13 +584,13 @@
 				qcom,cpr-corners = <7>;
 
 				qcom,cpr-corner-fmax-map = <1 2 3 4 5 6>;
-
-				qcom,cpr-voltage-ceiling =
-					<535000  595000  675000  740000
-					 820000  875000 1020000>;
+        /* -100mv */
+        qcom,cpr-voltage-ceiling =
+					<485000  545000  625000  690000
+					 770000  825000  970000>;
 				qcom,cpr-voltage-floor =
-					<454000  454000  546000  602000
-					 662000  694000 1020000>;
+					<404000  404000  496000  552000
+					 612000  644000  970000>;
 
 				qcom,mem-acc-voltage = <1 1 1 2 2 2 2>;
 				qcom,system-voltage =
@@ -735,13 +735,13 @@
 					/* Speed bin 4 */
 					<2 3 4 5 8>;
 
-				qcom,cpr-voltage-ceiling =
-					<684000  684000  684000  748000  828000
-					 1028000 1028000 1028000>;
+        qcom,cpr-voltage-ceiling =
+  				< 724000  724000  724000  788000  868000
+  				 1068000 1068000 1068000>;
 
-				qcom,cpr-voltage-floor =
-					<548000  548000  556000  612000  672000
-					 684000  744000  804000>;
+  			qcom,cpr-voltage-floor =
+  				<588000  588000  596000  652000  712000
+  				 744000  784000  844000>;
 
 				qcom,corner-frequencies =
 					/* Speed bin 0 */
@@ -886,13 +886,14 @@
 					/* Speed-bin 4 */
 					<2 3 4 6 7>;
 
-				qcom,cpr-voltage-ceiling =
-					<684000  648000  748000  828000
-					 948000  948000 1028000>;
+        qcom,cpr-voltage-ceiling =
+  				<724000  724000  788000  868000
+  				 988000  988000 1068000>;
 
-				qcom,cpr-voltage-floor =
-					<548000  556000  612000  672000
-					 704000 744000  804000>;
+  			qcom,cpr-voltage-floor =
+  				<588000  596000  652000  712000
+  				 744000  784000  844000>;
+
 
 				qcom,corner-frequencies =
 					/* Speed bin 0 */

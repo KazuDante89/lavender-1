@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-git clone --depth=1 https://github.com/Nuub32User/lavender -b  master  folder
+git clone --depth=1 https://github.com/KazuDante89/simple-kernel-sdm660-lavender -b eas3 folder
 cd folder
 git clone https://github.com/arter97/arm64-gcc --depth=1
 git clone https://github.com/arter97/arm32-gcc --depth=1
-git clone --depth=1 https://github.com/Nuub32User/AnyKernel3 AnyKernel
+git clone --depth=1 https://github.com/KazuDante89/AnyKernel3-EAS AnyKernel
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F-%S")
 START=$(date +"%s")
@@ -12,14 +12,14 @@ PATH="$(pwd)/arm64-gcc/bin:$(pwd)/arm32-gcc/bin:${PATH}" \
 export ARCH=arm64
 export USE_CCACHE=1
 export KBUILD_BUILD_HOST=circleci
-export KBUILD_BUILD_USER="Nuub32User"
+export KBUILD_BUILD_USER="Kazu_Dante"
 # Send info about the build to Telegram Channel/Group (Depending upon what chat_id you've specified in CircleCI Environment Variables)
 function sendinfo() {
     curl -s -X POST "https://api.telegram.org/bot$token/sendMessage" \
         -d chat_id="$chat_id" \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
-        -d text="<b>Experimental Kernel</b>%0ABuild Status : SUCCESS%0ALast Commit Info - <code>$(git log --pretty=format:'"%h : %s"' -1)</code>" 
+        -d text="<b>[EAS]Crysis Kernelv0</b>%0ABuild Status : SUCCESS%0ALast Commit Info - <code>$(git log --pretty=format:'"%h : %s"' -1)</code>"
 }
 # Push kernel to Telegram Channel/Group
 function push() {
@@ -29,7 +29,7 @@ function push() {
         -F chat_id="$chat_id" \
         -F "disable_web_page_preview=true" \
         -F "parse_mode=html" \
-        -F caption="Enjoy Lyf Now"
+        -F caption="Completed"
 }
 # Broke the process on Error countup check
 function finerr() {
@@ -53,8 +53,8 @@ function compile() {
 # Zipping (Using Anykernel Repo)
 function zipping() {
     cd AnyKernel || exit 1
-    zip -r9 Experimental-Kernel-Test-${TANGGAL}.zip *
-    cd .. 
+    zip -r9 [EAS]Crysis-Kernelv0.zip *
+    cd ..
 }
 sendinfo
 compile
@@ -62,4 +62,3 @@ zipping
 END=$(date +"%s")
 DIFF=$(($END - $START))
 push
-
